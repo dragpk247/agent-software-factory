@@ -1,0 +1,13 @@
+services:
+  agent-sandbox:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.agent-sandbox
+    image: agent-software-factory-sandbox:latest
+    container_name: agent_sandbox_worker
+    volumes:
+      - ../workspace:/workspace
+    working_dir: /workspace
+    network_mode: bridge
+    restart: unless-stopped
+    command: tail -f /dev/null
